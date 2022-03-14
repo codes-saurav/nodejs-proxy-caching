@@ -42,6 +42,20 @@ app.use('/weather', createProxyMiddleware({
     },
 }));
 
+app.use('/posts', createProxyMiddleware({
+    target: 'https://jsonplaceholder.typicode.com/posts',
+    changeOrigin: true,
+    pathRewrite: {
+        [`^/posts`]: '',
+    },
+}));
+app.use('/fooditems', createProxyMiddleware({
+    target: 'https://foodhub-server.herokuapp.com/menu',
+    changeOrigin: true,
+    pathRewrite: {
+        [`^/fooditems`]: '',
+    },
+}));
 
 
 app.get("/", (req, res) => {
